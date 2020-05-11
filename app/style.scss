@@ -262,6 +262,9 @@ input {
 
 
 .admin-action {
+  .button {
+    margin-bottom: 1rem;
+  }
   .button[disabled],
   .button[disabled]:hover {
     background: transparent;
