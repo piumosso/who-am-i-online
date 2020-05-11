@@ -1,4 +1,6 @@
 const express = require('express');
+const http = require('http');
+const socketIO = require('socket.io');
 const manifest = require('../manifest.json');
 
 
@@ -16,17 +18,17 @@ const template = `
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <script src="./socket.io.js"></script>
+  <script type="text/javascript" src="./socket.io.js"></script>
   <script type="text/javascript" src="/${manifest['bundle.js']}" ></script>
 </body>
 </html>
 `;
 
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const app = express();
-const http = require('http').createServer(app);
-const io = require('socket.io')(http);
+const server = http.createServer(app);
+const io = socketIO(server);
 
 
 app.use(express.static('public'));
@@ -41,4 +43,4 @@ io.on('connection', function (socket) {
 });
 
 
-app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
+server.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));
