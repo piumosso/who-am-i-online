@@ -2,6 +2,7 @@ const express = require('express');
 const http = require('http');
 const socketIO = require('socket.io');
 const manifest = require('../manifest.json');
+const {v4: uuid} = require('uuid');
 
 
 // Шаблон обёртки страницы
@@ -35,11 +36,28 @@ app.use(express.static('public'));
 app.get('*', (req, res) => res.send(template));
 
 
+const GAMES = {};
+
+
 io.on('connection', function (socket) {
-  console.log('a user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
+  console.log('-> connection');
+
+  socket.on('createGame', () => {
+    console.log('-> createGame');
+    const gameId = uuid();
+    const adminId = uuid();
+
+    GAMES[gameId] = {
+      id: gameId,
+      players: [
+        {
+          id: adminId
+        }
+      ],
+      state: 'waiting'
+    };
+    socket.emit('gameCreated', GAMES[gameId])
+  })
 });
 
 
