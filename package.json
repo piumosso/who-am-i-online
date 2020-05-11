@@ -1,8 +1,13 @@
 {
-  "name": "hat",
+  "name": "who-am-i-online",
   "version": "0.0.1",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "build": "webpack"
+  },
+  "engines": {
+    "node": "10.13.0",
+    "npm": "6.x"
   },
   "devDependencies": {
     "babel-core": "6.26.3",
