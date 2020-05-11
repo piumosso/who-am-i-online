@@ -1,7 +1,8 @@
-import {takeEvery, put} from 'redux-saga/effects';
+import {takeEvery, put, call} from 'redux-saga/effects';
 import {ACTIONS} from './constants';
 import {createPlayer, inProgress, notFound, success} from './actions';
 import {socket} from './socket';
+import {wait} from './utils';
 
 
 function* createGameSaga() {
@@ -24,6 +25,7 @@ function* checkGameSaga({game}) {
 
 
 function* successSaga() {
+  yield call(wait, 100);
   yield put(success());
 }
 

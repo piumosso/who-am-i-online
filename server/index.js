@@ -16,7 +16,7 @@ const template = `
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Who am I online</title>
   <link data-react-helmet="true" rel="stylesheet" href="/${manifest['bundle.css']}" />
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap" rel="stylesheet">
 </head>
 <body>
   <script type="text/javascript" src="/socket.io.js"></script>

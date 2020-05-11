@@ -9,11 +9,13 @@ export default ({game: {id, players}, inProgress, gameWasStarted}) => <section>
     {players.map(({id: playerId, name, isFinished}, index) => <div key={index}>
       {index + 1}. {name}
       {gameWasStarted && !isFinished &&
-      <button onClick={() => store.dispatch(finishPlayer({gameId: id, playerId}))} disabled={inProgress}>Угадал себя</button>}
+      <button onClick={() => store.dispatch(finishPlayer({gameId: id, playerId}))} disabled={inProgress}>Угадал
+        себя</button>}
     </div>)}
   </div>
   {!gameWasStarted && <div>
-    <button onClick={() => store.dispatch(startGame({gameId: id}))} disabled={inProgress || players.length < 2}>
+    <button className="button" onClick={() => store.dispatch(startGame({gameId: id}))}
+            disabled={inProgress || players.length < 2}>
       Поехали!
     </button>
   </div>}

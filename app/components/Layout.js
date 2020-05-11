@@ -1,6 +1,7 @@
 import React from 'react';
 import {useSelector} from 'react-redux';
 import {NavLink} from 'react-router-dom';
+import cn from 'classnames';
 
 export default ({children}) => {
   const connected = useSelector(state => state.app.connected);
@@ -8,12 +9,9 @@ export default ({children}) => {
 
   return <section className="page">
     <header className="page__header">
-      <NavLink to="/">Main page</NavLink><br/>
-      <small>Connected: {String(connected)} </small>
-      <small>In progress: {String(inProgress)} </small>
-      <br/>
-      <br/>
-      <br/>
+      <div className={cn('page__progressBar', {inProgress})} />
+      <NavLink className="page__logo" to="/">Who am I?</NavLink>
+      <div className={cn('page__connection', {connected})} />
     </header>
 
     <div className="page__content">
@@ -21,4 +19,3 @@ export default ({children}) => {
     </div>
   </section>;
 }
-
