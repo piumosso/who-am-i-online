@@ -15,6 +15,9 @@ export const inProgress = () => ({
 export const success = () => ({
   type: ACTIONS.SUCCESS,
 });
+export const notFound = () => ({
+  type: ACTIONS.NOT_FOUND,
+});
 
 
 export const createGame = () => ({
