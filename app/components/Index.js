@@ -9,14 +9,13 @@ export default () => {
   const inProgress = useSelector(state => state.app.inProgress);
   const game = useSelector(state => state.game);
 
-  return <section className="index">
+  return <section>
     {game ?
-      <div>
+      <div className="admin-invitation">
         <ShareLink/>
-        <div>
-          <NavLink to={`/${game.id}/`}>Начать игру</NavLink>
-        </div>
-      </div> : <div className="invitation">
+        <NavLink className="action-link" to={`/${game.id}/`}>Начать игру</NavLink>
+      </div> :
+      <div className="invitation">
         <div className="invitation__game-description">
           <p>
             Игроки одним из способов получают себе на лоб карточки, бумажки, наклейки или стикеры с именами популярных

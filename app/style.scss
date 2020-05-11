@@ -32,6 +32,10 @@ body {
 
   &__header {
     margin-bottom: 5rem;
+
+    @media (max-width: 500px) {
+      margin-bottom: 4rem;
+    }
   }
   &__progressBar {
     position: absolute;
@@ -54,6 +58,10 @@ body {
     font-family: serif;
     transform: translateX(-2%);
     line-height: 0.8;
+
+    @media (max-width: 500px) {
+      font-size: 5rem;
+    }
   }
   &__connection {
     position: absolute;
@@ -82,15 +90,53 @@ body {
   background: none;
   padding: 1rem 3rem;
   cursor: pointer;
+  outline: none;
 
   &:hover {
     background: #7edfff;
+  }
+  &[disabled] {
+    border: 2px solid;
+    color: rgba(black, 0.5);
+
+    &:hover {
+      background: transparent;
+    }
+  }
+}
+
+
+.action-link {
+  display: inline-block;
+  font-size: 1.8rem;
+  background: none;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  background: #7edfff;
+  color: inherit !important;
+  text-decoration: none !important;
+}
+
+
+input {
+  border: 2px solid;
+  font-size: 1.6rem;
+  background: none;
+  padding: 0.7rem 0.8rem;
+  outline: none;
+
+  &[readonly] {
+    background-color: #eeeeea;
   }
 }
 
 
 .invitation {
   margin-top: 7rem;
+
+  @media (max-width: 500px) {
+    margin-top: 5rem;
+  }
 
   &__game-description {
     margin-bottom: 5rem;
@@ -100,5 +146,28 @@ body {
       line-height: 1.3;
       margin-bottom: 1.6rem;
     }
+  }
+}
+
+
+.share-link {
+  max-width: 600px;
+
+  &__label {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  &__input {
+    width: 100%;
+  }
+}
+
+
+.admin-invitation {
+  .share-link {
+    margin-bottom: 3vw;
+  }
+  .action-link {
+    margin-top: 1rem;
   }
 }
