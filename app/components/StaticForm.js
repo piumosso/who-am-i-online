@@ -3,8 +3,8 @@ import React from 'react';
 
 export default ({name, person}) => <div>
   <div>
-    <div>Your name: {name}</div>
-    <div>Person name: {person}</div>
+    <div>Тебя зовут {name}</div>
+    <div>Имя персонажа {person}</div>
   </div>
-  Wait for others!
+  Ждём, пока остальные подтянутся
 </div>;

@@ -1,8 +1,8 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Index from './Index';
-import RedirectToPlay from './RedirectToPlay';
-import Play from './Play';
+import RedirectToPlay from './RedirectToGame';
+import Play from './Game';
 import Layout from './Layout';
 
 

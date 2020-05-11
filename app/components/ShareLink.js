@@ -6,11 +6,9 @@ export default () => {
   const gameLink = game && `${location.origin}/${game.id}/`;
 
   return <div>
+    <input type="text" value={gameLink} readOnly={true} />
     <div>
-      Game link: {gameLink}
-    </div>
-    <div>
-      Copy this link and send it to your friends
+      Скопируй ссылку и пригласи друзей в игру
     </div>
     <br/>
   </div>

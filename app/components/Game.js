@@ -29,7 +29,7 @@ export default () => {
   });
 
   if (notFound) {
-    return <div>Not found</div>;
+    return <div>Тут пусто, совсем ничего нет</div>;
   }
   if (!game) {
     return <div>loading...</div>;
@@ -41,7 +41,7 @@ export default () => {
   const gameWasStarted = game.state === 'started';
 
   if (gameWasStarted && !isPlayerCompleted) {
-    return <div>The game was started without you</div>;
+    return <div>Оу, кажется игру начали без тебя</div>;
   }
 
   return <section className="index">

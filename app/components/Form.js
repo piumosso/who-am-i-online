@@ -12,11 +12,11 @@ export default () => {
 
   return <div>
     <div>
-      <div>Your name</div>
+      <div>Как тебя зовут</div>
       <input type="text" value={name} onChange={e => setName(e.target.value)}/>
     </div>
     <div>
-      <div>Person name</div>
+      <div>Загадай имя персонажа</div>
       <input type="text" value={person} onChange={e => setPerson(e.target.value)}/>
     </div>
     <div>

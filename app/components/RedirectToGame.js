@@ -28,7 +28,6 @@ export default () => {
       store.dispatch(createPlayer({playerId}));
     }
 
-    console.log(`/${gameId}/${playerId}/`);
     history.push(`/${gameId}/${playerId}/`);
   });
 

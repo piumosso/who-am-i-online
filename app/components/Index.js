@@ -14,9 +14,9 @@ export default () => {
       <div>
         <ShareLink />
         <div>
-          <NavLink to={`/${game.id}/`}>Go to game!</NavLink>
+          <NavLink to={`/${game.id}/`}>Начать игру</NavLink>
         </div>
       </div> :
-      <button onClick={() => store.dispatch(createGame())} disabled={inProgress}>Create game</button>}
+      <button onClick={() => store.dispatch(createGame())} disabled={inProgress}>Создать игру</button>}
   </section>;
 };

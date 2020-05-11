@@ -3,7 +3,7 @@ import React from 'react';
 
 export default ({game: {players, matchIndexes}, playerId}) => <section>
   <div>
-    Who is who:
+    Кто все эти люди:
   </div>
   <div>
     {players.map(({id, name, isFinished}, index) =>
