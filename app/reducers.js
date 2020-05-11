@@ -1,7 +1,7 @@
 import {ACTIONS} from './constants';
 
 
-export const app = (app = {connected: false, inProgress: false}, {type}) => {
+export const app = (app = {connected: false, inProgress: false, playerId: null}, {type, ...params}) => {
   switch (type) {
     case ACTIONS.CONNECT: {
       return {...app, connected: true};
@@ -15,6 +15,9 @@ export const app = (app = {connected: false, inProgress: false}, {type}) => {
     case ACTIONS.SUCCESS: {
       return {...app, inProgress: false};
     }
+    case ACTIONS.CREATE_PLAYER: {
+      return {...app, playerId: params.playerId};
+    }
     default: {
       return app;
     }
@@ -26,6 +29,9 @@ export const game = (play = null, {type, ...params}) => {
 
   switch (type) {
     case ACTIONS.GAME_CREATED: {
+      return params.game;
+    }
+    case ACTIONS.GAME_UPDATED: {
       return params.game;
     }
     default: {

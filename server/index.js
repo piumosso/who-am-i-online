@@ -19,7 +19,7 @@ const template = `
   <link href="https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <script type="text/javascript" src="./socket.io.js"></script>
+  <script type="text/javascript" src="/socket.io.js"></script>
   <script type="text/javascript" src="/${manifest['bundle.js']}" ></script>
 </body>
 </html>
@@ -40,10 +40,7 @@ const GAMES = {};
 
 
 io.on('connection', function (socket) {
-  console.log('-> connection');
-
   socket.on('createGame', () => {
-    console.log('-> createGame');
     const gameId = uuid();
     const adminId = uuid();
 
@@ -57,7 +54,11 @@ io.on('connection', function (socket) {
       state: 'waiting'
     };
     socket.emit('gameCreated', GAMES[gameId])
-  })
+  });
+
+  socket.on('fetchGame', (gameId) => {
+    socket.emit('gameUpdated', GAMES[gameId])
+  });
 });
 
 

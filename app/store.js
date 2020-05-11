@@ -1,6 +1,6 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import {game, app} from './reducers';
-import {connect, disconnect, gameCreated} from './actions';
+import {connect, disconnect, gameCreated, gameUpdated} from './actions';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas';
 import {socket} from './socket';
@@ -22,3 +22,4 @@ sagaMiddleware.run(rootSaga);
 socket.on('connect', () => store.dispatch(connect()));
 socket.on('disconnect', () => store.dispatch(disconnect()));
 socket.on('gameCreated', (game) => store.dispatch(gameCreated({game})));
+socket.on('gameUpdated', (game) => store.dispatch(gameUpdated({game})));

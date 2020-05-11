@@ -24,5 +24,19 @@ export const gameCreated = ({game}) => ({
   type: ACTIONS.GAME_CREATED,
   game
 });
+export const fetchGame = ({gameId}) => ({
+  type: ACTIONS.FETCH_GAME,
+  gameId
+});
+export const gameUpdated = ({game}) => ({
+  type: ACTIONS.GAME_UPDATED,
+  game
+});
+
+
+export const createPlayer = ({playerId}) => ({
+  type: ACTIONS.CREATE_PLAYER,
+  playerId
+});
 
 
