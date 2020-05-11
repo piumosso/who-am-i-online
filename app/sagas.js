@@ -1,7 +1,6 @@
 import {takeEvery, put, call} from 'redux-saga/effects';
 import {ACTIONS} from './constants';
 import {fetchPageFailure, fetchPageSuccess} from './actions';
-import {fetchPost} from './api';
 
 
 function* fetchPageSaga({key}) {
