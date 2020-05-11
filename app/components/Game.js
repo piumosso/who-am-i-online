@@ -41,7 +41,7 @@ export default () => {
   const gameWasStarted = game.state === 'started';
 
   if (gameWasStarted && !isPlayerCompleted) {
-    return <div>Оу, кажется игру начали без тебя</div>;
+    return <div className="state-message">Оу, кажется игру начали без тебя</div>;
   }
 
   return <section className="game">
