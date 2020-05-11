@@ -31,7 +31,7 @@ export default () => {
     history.push(`/${gameId}/${playerId}/`);
   });
 
-  return <section>
-    redirect...
+  return <section className="state-message">
+    Перенаправление...
   </section>;
 };

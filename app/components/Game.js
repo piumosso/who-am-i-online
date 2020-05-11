@@ -29,10 +29,10 @@ export default () => {
   });
 
   if (notFound) {
-    return <div>Тут пусто, совсем ничего нет</div>;
+    return <div className="state-message">Тут пусто, совсем ничего нет!</div>;
   }
   if (!game) {
-    return <div>loading...</div>;
+    return <div className="state-message">Загрузка...</div>;
   }
 
   const currentPlayerInGame = game.players.find(({id}) => id === playerId);
@@ -44,12 +44,13 @@ export default () => {
     return <div>Оу, кажется игру начали без тебя</div>;
   }
 
-  return <section className="index">
+  return <section className="game">
+    {gameWasStarted ?
+      <PersonsMatch game={game} playerId={playerId}/> :
+      isPlayerCompleted ?
+        <StaticForm {...currentPlayerInGame} /> :
+        <Form/>}
     {!gameWasStarted && <ShareLink />}
-    {gameWasStarted ? <PersonsMatch game={game} playerId={playerId}/> : isPlayerCompleted ? <StaticForm {...currentPlayerInGame} /> :
-      <Form/>}
-      <br/>
-      <br/>
     {isAdmin && <AdminPanel game={game} inProgress={inProgress} gameWasStarted={gameWasStarted} />}
   </section>;
 }

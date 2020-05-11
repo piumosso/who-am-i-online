@@ -97,10 +97,12 @@ body {
   }
   &[disabled] {
     border: 2px solid;
-    color: rgba(black, 0.5);
+    background-color: #eeeeea;
+    color: rgba(black, 0.6);
+    cursor: default;
 
     &:hover {
-      background: transparent;
+      background-color: #eeeeea;
     }
   }
 }
@@ -170,4 +172,46 @@ input {
   .action-link {
     margin-top: 1rem;
   }
+}
+
+
+.game {
+  .share-link {
+    margin-bottom: 3vw;
+  }
+}
+
+
+.form {
+  max-width: 400px;
+  margin-bottom: 5vw;
+
+  &__field {
+    margin-bottom: 1vw;
+    margin-top: 1rem;
+  }
+  &__label {
+    font-size: 1.6rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .input {
+    width: 100%;
+  }
+  .button {
+    margin-top: 2rem;
+  }
+}
+
+
+.state-message {
+  color: rgba(black, 0.6);
+  font-size: 1.6rem;
+}
+
+
+.static-form {
+  margin-bottom: 5vw;
+  font-size: 1.6rem;
+  line-height: 1.3;
 }
