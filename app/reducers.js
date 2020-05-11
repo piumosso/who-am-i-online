@@ -36,18 +36,20 @@ export const app = (app = {
   }
 };
 
-export const game = (play = null, {type, ...params}) => {
-  console.warn('ACTION:', type, params);
-
+export const game = (game = null, {type, ...params}) => {
   switch (type) {
     case ACTIONS.GAME_CREATED: {
       return params.game;
     }
     case ACTIONS.GAME_UPDATED: {
+      // Предохранитель
+      if (game && params.game.id !== game.id) {
+        return game
+      }
       return params.game;
     }
     default: {
-      return play;
+      return game;
     }
   }
 };

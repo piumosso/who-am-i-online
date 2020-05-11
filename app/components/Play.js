@@ -7,6 +7,7 @@ import PersonsMatch from './PersonsMatch';
 import AdminPanel from './AdminPanel';
 import StaticForm from './StaticForm';
 import Form from './Form';
+import ShareLink from './ShareLink';
 
 
 export default () => {
@@ -44,8 +45,11 @@ export default () => {
   }
 
   return <section className="index">
+    {!gameWasStarted && <ShareLink />}
     {gameWasStarted ? <PersonsMatch game={game} playerId={playerId}/> : isPlayerCompleted ? <StaticForm {...currentPlayerInGame} /> :
       <Form/>}
+      <br/>
+      <br/>
     {isAdmin && <AdminPanel game={game} inProgress={inProgress} gameWasStarted={gameWasStarted} />}
   </section>;
 }

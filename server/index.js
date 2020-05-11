@@ -75,7 +75,7 @@ io.on('connection', function (socket) {
     player.name = name;
     player.person = person;
 
-    socket.emit('gameUpdated', GAMES[gameId])
+    io.emit('gameUpdated', GAMES[gameId])
   });
 
   socket.on('startGame', (gameId) => {
@@ -93,7 +93,7 @@ io.on('connection', function (socket) {
     GAMES[gameId].matchIndexes = matchIndexes;
     GAMES[gameId].state = 'started';
 
-    socket.emit('gameUpdated', GAMES[gameId])
+    io.emit('gameUpdated', GAMES[gameId])
   });
 
   socket.on('finishPlayer', ({gameId, playerId}) => {
@@ -107,7 +107,7 @@ io.on('connection', function (socket) {
       player.isFinished = true;
     }
 
-    socket.emit('gameUpdated', GAMES[gameId])
+    io.emit('gameUpdated', GAMES[gameId])
   });
 });
 
