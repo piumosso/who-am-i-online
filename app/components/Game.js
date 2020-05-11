@@ -52,7 +52,7 @@ export default () => {
         <StaticForm {...currentPlayerInGame} /> :
         <Form/>}
     {!gameWasStarted && <ShareLink />}
-    {!isAdmin && <Rules />}
+    {!isAdmin && !gameWasStarted && <Rules />}
     {isAdmin && <AdminPanel game={game} inProgress={inProgress} gameWasStarted={gameWasStarted} />}
   </section>;
 }
