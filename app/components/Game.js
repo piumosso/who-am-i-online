@@ -8,6 +8,7 @@ import AdminPanel from './AdminPanel';
 import StaticForm from './StaticForm';
 import Form from './Form';
 import ShareLink from './ShareLink';
+import Rules from './Rules';
 
 
 export default () => {
@@ -51,6 +52,7 @@ export default () => {
         <StaticForm {...currentPlayerInGame} /> :
         <Form/>}
     {!gameWasStarted && <ShareLink />}
+    {!isAdmin && <Rules />}
     {isAdmin && <AdminPanel game={game} inProgress={inProgress} gameWasStarted={gameWasStarted} />}
   </section>;
 }

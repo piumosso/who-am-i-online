@@ -147,12 +147,6 @@ input {
 
   &__game-description {
     margin-bottom: 5rem;
-
-    p {
-      font-size: 1.6rem;
-      line-height: 1.5;
-      margin-bottom: 1.6rem;
-    }
   }
 }
 
@@ -320,4 +314,13 @@ input {
     color: rgba(black, 0.5)
   }
   &__item-name {}
+}
+
+
+.rules {
+  p {
+    font-size: 1.6rem;
+    line-height: 1.5;
+    margin-bottom: 1.6rem;
+  }
 }
