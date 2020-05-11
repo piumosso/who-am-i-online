@@ -33,6 +33,24 @@ function* createPlayerSaga({game}) {
 }
 
 
+function* createPersonSaga({name, person, gameId, playerId}) {
+  yield put(inProgress());
+  socket.emit('createPerson', {name, person, gameId, playerId});
+}
+
+
+function* startGameSaga({gameId}) {
+  yield put(inProgress());
+  socket.emit('startGame', gameId);
+}
+
+
+function* finishPlayerSaga({gameId, playerId}) {
+  yield put(inProgress());
+  socket.emit('finishPlayer', {gameId, playerId});
+}
+
+
 export default function* rootSaga() {
   yield takeEvery(ACTIONS.CREATE_GAME, createGameSaga);
   yield takeEvery(ACTIONS.GAME_CREATED, successSaga);
@@ -41,4 +59,8 @@ export default function* rootSaga() {
   yield takeEvery(ACTIONS.FETCH_GAME, fetchGameSaga);
   yield takeEvery(ACTIONS.GAME_UPDATED, checkGameSaga);
   yield takeEvery(ACTIONS.GAME_UPDATED, successSaga);
+
+  yield takeEvery(ACTIONS.CREATE_PERSON, createPersonSaga);
+  yield takeEvery(ACTIONS.START_GAME, startGameSaga);
+  yield takeEvery(ACTIONS.FINISH_PLAYER, finishPlayerSaga);
 }

@@ -41,5 +41,20 @@ export const createPlayer = ({playerId}) => ({
   type: ACTIONS.CREATE_PLAYER,
   playerId
 });
-
+export const createPerson = ({name, person, gameId, playerId}) => ({
+  type: ACTIONS.CREATE_PERSON,
+  name,
+  person,
+  gameId,
+  playerId
+});
+export const startGame = ({gameId}) => ({
+  type: ACTIONS.START_GAME,
+  gameId
+});
+export const finishPlayer = ({gameId, playerId}) => ({
+  type: ACTIONS.FINISH_PLAYER,
+  gameId,
+  playerId
+});
 

@@ -51,12 +51,62 @@ io.on('connection', function (socket) {
           id: adminId
         }
       ],
-      state: 'waiting'
+      state: 'waiting',
+      matchIndexes: null
     };
     socket.emit('gameCreated', GAMES[gameId])
   });
 
   socket.on('fetchGame', (gameId) => {
+    socket.emit('gameUpdated', GAMES[gameId])
+  });
+
+  socket.on('createPerson', ({name, person, gameId, playerId}) => {
+    if (!GAMES[gameId]) {
+      return;
+    }
+
+    let player = GAMES[gameId].players.find(({id}) => id === playerId);
+
+    if (!player) {
+      player = {id: playerId};
+      GAMES[gameId].players.push(player)
+    }
+    player.name = name;
+    player.person = person;
+
+    socket.emit('gameUpdated', GAMES[gameId])
+  });
+
+  socket.on('startGame', (gameId) => {
+    if (!GAMES[gameId]) {
+      return;
+    }
+
+    const playerIndexes = new Array(GAMES[gameId].players.length).fill().map((item, index) => index);
+    let matchIndexes;
+
+    do {
+      matchIndexes = playerIndexes.sort(() => Math.random() - 0.5);
+    } while (matchIndexes.some((v, i) => v === i))
+
+    GAMES[gameId].matchIndexes = matchIndexes;
+    GAMES[gameId].state = 'started';
+
+    socket.emit('gameUpdated', GAMES[gameId])
+  });
+
+  socket.on('finishPlayer', ({gameId, playerId}) => {
+    if (!GAMES[gameId]) {
+      return;
+    }
+
+    let player = GAMES[gameId].players.find(({id}) => id === playerId);
+
+    if (player) {
+      player.isFinished = true;
+    }
+
     socket.emit('gameUpdated', GAMES[gameId])
   });
 });
